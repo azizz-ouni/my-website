@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ff4e8a, #ff9ecf);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+    }
+
+    .container {
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background-color: #ffffff;
+        color: #ff4e8a;
+        margin-right: 20px;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.2);
+    }
+
+    #noBtn {
+        background-color: #ff2e63;
+        color: white;
+        position: absolute;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .heart {
+        position: fixed;
+        color: white;
+        font-size: 20px;
+        animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine, NOURCHEN? ❤️</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+    <h2 id="loveMessage" class="hidden">Yaaay! I love you so much ❤️🥰</h2>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const loveMessage = document.getElementById("loveMessage");
+
+    // When she clicks YES
+    yesBtn.addEventListener("click", function() {
+        loveMessage.classList.remove("hidden");
+        createHearts();
+    });
+
+    // When she tries to click NO (it runs away 😈)
+    noBtn.addEventListener("mouseover", function() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    // Create floating hearts
+    function createHearts() {
+        setInterval(function() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }, 300);
+    }
+</script>
+
+</body>
+</html>
